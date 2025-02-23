@@ -33,7 +33,9 @@ app.get('/', (req, res) => {
 })
 
 app.get('/auth-success', (req, res) => {
-    res.send(`This is Auth Success ${req.query.token}`);
+    const token = req.query.token;
+  // Redirect to frontend with token
+  res.redirect(`${process.env.FRONTEND_URL}?token=${token}`);
   })
 
 app.use('/api/auth', authRoutes);
